@@ -8,16 +8,36 @@
             <img src="<%=foundProduct.img%>" class="card-img-top" alt="...">
             <div class="card-body">
               <h3 class="card-title"><%=foundProduct.name%></h3>
-              <h5 class="card-title"><%=foundProduct.price%></h5>
+              <!-- <h5 class="card-title"><%=foundProduct.price%></h5> -->
               <p class="card-text"><%=foundProduct.desc%></p>
               <a href="#" class="btn btn-primary">Buy</a>
               <a href="#" class="btn btn-success">Add to cart</a>
               <a href="/products/<%=foundProduct._id%>/edit" class="btn btn-info">Edit</a>
+            <form action="/products/<%=foundProduct._id%>?_method=DELETE" method="POST">
+              <button>DELETE</button>
+            </form>
             </div>
           </div>
     </div>
     <div class="col-lg-6">
         <h1>Displaying reviews</h1>
+
+        <form action="/products/<%=foundProduct._id%>/review" method="POST">
+
+          <div class="my-3">
+            <div>
+              <label class="form-label" for="rate">Rating: </label>
+              <input class="form-control" type="range" name="rating" min="0" max="5" id="rate">
+            </div>
+            <div>
+              <label class="form-label" for="comment">Comment: </label>
+              <textarea class="form-control" name="comment" id="comment" rows="5"></textarea>
+            </div>
+            <button  class="btn btn-sm btn-success">Add review</button>
+
+          </div>
+
+      </form>
 
     </div>
 </div>

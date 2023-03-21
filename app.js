@@ -3,9 +3,11 @@ const app = express();
 let path = require('path');
 const mongoose = require('mongoose');
 let seedDB = require('./seed');
-let productRoutes = require('./routes/products/productsRoutes')
 let ejsMate = require('ejs-mate');
-var methodOverride = require('method-override');
+let methodOverride = require('method-override');
+let productRoutes = require('./routes/products/productsRoutes')
+let revRoutes = require('./routes/review');
+
 
 
 
@@ -25,7 +27,10 @@ app.set('views' , path.join(__dirname , 'views'));
 app.set('view engine' , 'ejs');
 app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname , 'public'))); //static files
+
+// routes
 app.use(productRoutes);
+app.use(revRoutes);
 
 
 // seedDB();

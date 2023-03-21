@@ -42,4 +42,14 @@ router.patch('/products/:id' , async (req,res)=>{
     res.redirect('/products');
 })
 
+
+// to delete the route
+
+router.delete('/products/:id' , async(req,res)=>{
+    let {id} = req.params;
+    await Product.findByIdAndDelete(id);
+    res.redirect('/products');
+})
+
+
 module.exports = router;

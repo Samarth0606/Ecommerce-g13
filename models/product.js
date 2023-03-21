@@ -14,13 +14,18 @@ let productSchema = new mongoose.Schema({
     price:{
         type:Number,
         min: 0,
-        default:"price mising",
         required:true
     },
     desc:{
         type:String,
         trim:true
-    }
+    },
+    reviews:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Review'
+        }
+    ]
 })
 
 
