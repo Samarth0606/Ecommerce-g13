@@ -23,7 +23,7 @@ router.post('/products' , async(req,res)=>{
 // to display a particular product
 router.get('/products/:id' , async(req,res)=>{
     let {id} =  req.params;
-    let foundProduct = await Product.findById(id);
+    let foundProduct = await Product.findById(id).populate('reviews');
     res.render('product/show' , {foundProduct})
 })
 

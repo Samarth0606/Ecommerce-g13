@@ -13,7 +13,8 @@ router.post('/products/:productId/review' , async(req,res)=>{
     await review.save();
     await product.save();
 
-    res.send('review mil gya');
+    // res.send('review mil gya');
+    res.redirect(`/products/${productId}`)
 
 } )
 

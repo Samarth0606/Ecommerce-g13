@@ -29,5 +29,10 @@ let productSchema = new mongoose.Schema({
 })
 
 
+productSchema.post('findOneAndDelete' , function(){
+    
+})
+
+
 let Product = mongoose.model('Product' , productSchema);
 module.exports = Product;

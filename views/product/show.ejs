@@ -27,7 +27,21 @@
           <div class="my-3">
             <div>
               <label class="form-label" for="rate">Rating: </label>
-              <input class="form-control" type="range" name="rating" min="0" max="5" id="rate">
+              <fieldset class="starability-basic">
+                <legend>First rating:</legend>
+                <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
+                <input type="radio" id="first-rate1" name="rating" value="1" />
+                <label for="first-rate1" title="Terrible">1 star</label>
+                <input type="radio" id="first-rate2" name="rating" value="2" />
+                <label for="first-rate2" title="Not good">2 stars</label>
+                <input type="radio" id="first-rate3" name="rating" value="3" />
+                <label for="first-rate3" title="Average">3 stars</label>
+                <input type="radio" id="first-rate4" name="rating" value="4" />
+                <label for="first-rate4" title="Very good">4 stars</label>
+                <input type="radio" id="first-rate5" name="rating" value="5" />
+                <label for="first-rate5" title="Amazing">5 stars</label>
+              </fieldset>
+              <!-- <input class="form-control" type="range" name="rating" min="0" max="5" id="rate"> -->
             </div>
             <div>
               <label class="form-label" for="comment">Comment: </label>
@@ -38,6 +52,29 @@
           </div>
 
       </form>
+
+
+      <div class="my-3">
+        <%for(let review of foundProduct.reviews){%>
+
+          <div class="card">
+            <!-- <div class="card-header">Rating: <%=review.rating%> </div> -->
+            <div class="card-body">
+              <p class="starability-result" data-rating="<%=review.rating%>">
+                Rated: <%=review.rating%> stars
+              </p>
+              <p class="card-text">Comment:  <%=review.comment%> </p>
+              <%if(review.createdAt){%>
+                <p><%=review.createdAt.toDateString()%></p>
+              <%}%>
+              <a href="#" class="btn btn-primary">Delete</a>
+            </div>
+           </div>
+          </div>
+
+        <%}%>
+        
+
 
     </div>
 </div>
