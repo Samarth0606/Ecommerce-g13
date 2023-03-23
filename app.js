@@ -1,42 +1,55 @@
 const express = require('express');
 const app = express();
-let path = require('path');
+const path = require('path');
 const mongoose = require('mongoose');
-let seedDB = require('./seed');
-let ejsMate = require('ejs-mate');
-let methodOverride = require('method-override');
-let productRoutes = require('./routes/products/productsRoutes')
-let revRoutes = require('./routes/review');
+const ejsMate = require('ejs-mate');
+const methodOverride = require('method-override');
+const session = require('express-session');
+const flash = require('connect-flash');
+
+mongoose.set('strictQuery', true);
+mongoose.connect('mongodb://localhost:27017/shopping-sam-app')
+    .then(() => console.log('DB Connected'))
+    .catch((err) => console.log(err));
 
 
-
-
-
-
-mongoose.set('strictQuery' , true);
-mongoose.connect('mongodb://127.0.0.1:27017/shopping-g13-app')
-.then(()=>{console.log("DB connected")})
-.catch((err)=>{console.log(err)})
-
-
-// override with POST having ?_method=DELETE
+app.engine('ejs', ejsMate);
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
-app.engine('ejs' , ejsMate);
-app.set('views' , path.join(__dirname , 'views'));
-app.set('view engine' , 'ejs');
-app.use(express.urlencoded({extended:true}));
-app.use(express.static(path.join(__dirname , 'public'))); //static files
 
-// routes
-app.use(productRoutes);
-app.use(revRoutes);
+const sessionConfig = {
+    secret: 'weneedsomebettersecret',
+    resave: false,
+    saveUninitialized: true
+}
 
+app.use(session(sessionConfig));
+app.use(flash());
 
-// seedDB();
-
-
-let port = 5000;
-app.listen(port , ()=>{
-    console.log(`server connected at port ${port}`)
+app.use((req, res, next) => {
+    res.locals.success = req.flash('success');
+    res.locals.error = req.flash('error');
+    next();
 })
+
+
+
+// Routes
+const productRoutes = require('./routes/product');
+const reviewRoutes = require('./routes/review');
+
+
+
+app.use(productRoutes);
+app.use(reviewRoutes);
+
+
+const port = 5000;
+
+app.listen(port, () => {
+    console.log(`server running at port ${port}`);
+});

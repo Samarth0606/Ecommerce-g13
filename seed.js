@@ -3,41 +3,41 @@ const Product = require('./models/product');
 
 const products = [
     {
-        name: "iphone 14 pro",
-        img:"https://images.unsplash.com/photo-1663408466313-2d4e7edaf172?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aXBob25lJTIwMTQlMjBwcm98ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",
-        price:"140000",
-        desc:"bohat mahenga"
+        name:"iphone 14pro",
+        img:'https://images.unsplash.com/photo-1491933382434-500287f9b54b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGFwcGxlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60',
+        price: 140000,
+        desc: "bohat mahenga"
     },
     {
-        name: "macbook pro",
-        img:"https://images.unsplash.com/photo-1530893609608-32a9af3aa95c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bWFjYm9vayUyMHByb3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
-        price:"250000",
-        desc:"aukaat ke bahar"
+        name:"macbook m2",
+        img:'https://images.unsplash.com/photo-1491933382434-500287f9b54b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGFwcGxlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60',
+        price: 250000,
+        desc: "aukaat ke bahar"
     },
     {
-        name: "iwatch",
-        img:"https://images.unsplash.com/photo-1600948891299-30a7f822e6d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8aXdhdGNofGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
-        price:"70000",
-        desc:"useless product"
+        name:"iwatch",
+        img:'https://images.unsplash.com/photo-1491933382434-500287f9b54b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGFwcGxlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60',
+        price: 70000,
+        desc: "useless product"
     },
     {
-        name: "ipad",
-        img:"https://images.unsplash.com/photo-1557825835-70d97c4aa567?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8aXBhZCUyMGFwcGxlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
-        price:"90000",
-        desc:"badiya product"
+        name:"ipad",
+        img:'https://images.unsplash.com/photo-1491933382434-500287f9b54b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGFwcGxlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60',
+        price: 88000,
+        desc: "badiya cheez"
     },
     {
-        name: "airpods",
-        img:"https://images.unsplash.com/photo-1644848545549-90a2f0b50c8b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8YWlycG9kcyUyMGFwcGxlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
-        price:"25000",
-        desc:"vahiyaad"
+        name:"airpods",
+        img:'https://images.unsplash.com/photo-1491933382434-500287f9b54b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGFwcGxlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60',
+        price: 27000,
+        desc: "vahiyaad thuuu radddi"
     }
 ]
 
 async function seedDB(){
-
-    await Product.deleteMany({});
+    // await Product.deleteMany({});
     await Product.insertMany(products);
-    console.log("DB seeded")
+    console.log("data seeded successfully")
 }
+
 module.exports = seedDB;

@@ -1,17 +1,18 @@
 const mongoose = require('mongoose');
 
-let reviewSchema = new mongoose.Schema({
+const reviewSchema = new mongoose.Schema({
     rating: {
-        type:Number,
-        min:0,
-        max:5
+        type: Number,
+        min: 0,
+        max: 5,
     },
     comment: {
-        type:String,
-        trim: true
+        type: String,
+        trim: true,
     }
-},{timestamps:true})
+},{timestamps:true});
 
 
-let Review = mongoose.model('Review' , reviewSchema);
+const Review = mongoose.model('Review', reviewSchema);
+
 module.exports = Review;
