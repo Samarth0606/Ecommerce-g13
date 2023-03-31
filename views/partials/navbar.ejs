@@ -17,11 +17,17 @@
         </li>
       </ul>
       <div class="navbar-nav ml-auto">
-          <a href="#" class="nav-link">Login</a> 
+
+        <%if(!currentUser){%>
+          <a href="/login" class="nav-link">Login</a> 
+        <%} else{%>
           <a href="#" class="nav-link"><i class="fas fa-shopping-cart"></i> 
             <sup><span class="badge bg-danger">2</span></sup> 
           </a>
-          <a href="#" class="nav-link">Logout</a>
+          <a href="/logout" class="nav-link">Logout</a>
+        <%}%>
+
+              
       </div>
       
     </div>
